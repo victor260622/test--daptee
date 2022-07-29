@@ -13,7 +13,7 @@
             <section class="flex justify-center items-center ">
                     <p v-text="price + ' $'"  class="text-xl text-green-600"/>
             </section>
-            <button  class="h-10 bg-yellow-500 rounded-2xl px-7 text-center w-52 " :class="textTheme">
+            <button  class="h-10 bg-yellow-500 rounded-2xl px-7 text-center w-52 selector" :class="textTheme">
                     <p class="pt-2">Buy!</p>
             </button>
          </section>
@@ -45,3 +45,8 @@ export default {
 
 }
 </script>
+<style>
+.selector:hover{
+    background-color: #E3811F ;
+}
+</style>

@@ -4,7 +4,7 @@
                 <img src="../assets/LogoDaptee.svg" />
             </section>
             <section class="flex flex-col justify-center pt-24 gap-y-8">
-                    <section v-for="item in items" :key="item" class="text-xl  flex justify-evenly items-center border-b py-2 border-gray-400 w-40 selector" :class="textTheme" @click="showComponent(item.id)" >
+                    <section v-for="item in items" :key="item" class="text-xl  flex justify-evenly items-center border-b py-2 border-gray-400 w-40" :class="textTheme" @click="showComponent(item.id)" >
                         <img :src="require(`../assets/${item.icon}.svg`)" :fill="'BtnHover'" />
                         <button  v-text="item.name"  />
                     </section>
