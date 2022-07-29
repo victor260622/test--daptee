@@ -1,4 +1,4 @@
-# victor_portfolio_web
+# test_daptee
 
 ## Project setup
 ```
@@ -19,6 +19,9 @@ npm run build
 ```
 npm run lint
 ```
+
+### User and pass
+admin admin
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

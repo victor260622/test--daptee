@@ -1,16 +1,20 @@
 <template>
-    <section class="flex fixed right-4 top-20 ">
+    <section class="flex " :class="fixed">
         <section :class="{'animation flex': changeThemes, 'animationOut':!changeThemes}">
 
-            <section class="flex flex-col items-center pr-3 py-5 " >
-                <button @click="showThemes" class="transform hover:rotate-45" >
-                    <img src="../assets/settings.svg" class="rotate" />
+            <section class="flex-col items-center pr-3 py-5 hidden lg:flex " >
+                <button @click="showThemes" class="transform hover:rotate-45 bg-gray-800  flex rounded-full" >
+                    <img src="../assets/settings.svg" class="rotate px-1 py-1" />
                 </button>
-                <!-- <section>
-                    <img src="../assets/settings.svg" />
-                </section> -->
             </section>
-            <section class="flex flex-col px-5 py-5 bgNigth rounded-xl " v-if="changeThemes">
+            <section class="flex flex-col px-5 py-5 bgNigth rounded-xl border border-gray-600" v-if="changeThemes">
+                <p class="text-white" v-text="'Themes Colors'" />
+                <section class="flex gap-x-2 mt-2" >
+                    <ButtonTheme @click="colorTheme(item.name, item.text)" v-for="item in colors" :key="item" :color="item.color" />
+                </section>
+            </section>
+            
+            <section class="flex flex-col px-5 py-5 bgNigth rounded-xl border border-gray-600 lg:hidden" v-if="movileThemes">
                 <p class="text-white" v-text="'Themes Colors'" />
                 <section class="flex gap-x-2 mt-2" >
                     <ButtonTheme @click="colorTheme(item.name, item.text)" v-for="item in colors" :key="item" :color="item.color" />
@@ -26,6 +30,7 @@ import ButtonTheme from './buttonTheme.vue'
     export default{
     data: () => ({
         changeThemes: false,
+        
         colors:[
             {
                 color:'bg-red-600',
@@ -43,12 +48,20 @@ import ButtonTheme from './buttonTheme.vue'
                 name:'blue'
             },
             {
-                color:'bg-yellow-600',
-                text:'text-yellow-600',
-                name:'yellow'
+                color:'bg-purple-600',
+                text:'text-purple-600',
+                name:'purple'
             },
         ],
     }),
+    props:{
+        fixed:{
+            default:'fixed right-4 top-20'
+        },
+        movileThemes:{
+            default: false,
+        } 
+    },
     methods: {
         showThemes() {
             this.changeThemes = !this.changeThemes;
@@ -56,7 +69,6 @@ import ButtonTheme from './buttonTheme.vue'
         colorTheme(color, text) {
             this.$emit("theme", color);
             this.$emit("textColor", text);
-            console.log(color, text)
         }
     },
     components: { ButtonTheme }
@@ -64,9 +76,9 @@ import ButtonTheme from './buttonTheme.vue'
 </script>
 <style scoped>
 .bgNigth{
-    background-color: #0d1117;
+    background-color: rgb(12 12 20 / 98%);
 }
-.rotate {
+.rotate:hover {
   animation: rotation 4s infinite linear;
 }
 @keyframes rotation {
@@ -92,17 +104,5 @@ import ButtonTheme from './buttonTheme.vue'
       transform: translateX(0%)
   }
 }
-/* .animationOut{
-  animation-name: animationOut;
-  animation-duration: 0.3s;
 
-}
-@keyframes animationOut {
-    100%{
-        transform: translateX(0%)
-  }
-      0%{
-          transform: translateX(100%);
-      }
-} */
 </style>

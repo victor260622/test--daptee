@@ -1,14 +1,15 @@
 <template>
-        <section class="px-16 pt-20 border-r border-red-700  min-h-screen bgNigth flex flex-col items-center">
-            <section>
-                <img src="../assets/logo.png" />
+        <section class="lg:px-8 xl:px-16 pt-20  min-h-screen  bgNigth flex flex-col items-center">
+            <section style="width: 172px;">
+                <img src="../assets/LogoDaptee.svg" />
             </section>
             <section class="flex flex-col justify-center pt-24 gap-y-6">
                     <section v-for="item in items" :key="item" class="text-xl  flex justify-evenly items-center gap-x-3 border-b py-2 border-gray-400 w-40 selector" :class="textTheme" @click="showComponent(item.id)" >
                         <img :src="require(`../assets/${item.icon}.svg`)" :fill="'BtnHover'" />
-                        <button  v-text="item.name" :href="item.url" />
+                        <button  v-text="item.name"  />
                     </section>
             </section>
+            
         </section>
 </template>
 <script>
@@ -18,34 +19,16 @@ export default{
     data: () => ({
         items:[
             {
-                name:'Home',
+                name:'Users',
                 url:'/',
-                icon:'home',
+                icon:'user',
                 id: 1
             },
             {
-                name:'About',
+                name:'Products',
                 url:'/about',
-                icon:'user',
-                id: 2
-            },
-            {
-                name:'Services',
-                url:'/services',
-                icon:'list',
-                id: 3
-            },
-            {
-                name:'Portfolio',
-                url:'/portfolio',
                 icon:'briefcase',
-                id: 4
-            },
-            {
-                name:'Contact',
-                url:'/contact',
-                icon:'mail',
-                id: 5
+                id: 2
             },
         ],
     }),
